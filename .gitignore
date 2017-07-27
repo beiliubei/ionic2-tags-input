@@ -16,5 +16,5 @@ Thumbs.db
 *.tgz
 
 # Ignored folders
-dist
+#dist
 aot

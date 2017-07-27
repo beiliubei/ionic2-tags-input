@@ -32,6 +32,7 @@ export class TagsInputComponent implements ControlValueAccessor {
   @Output() onTagAdded:EventEmitter<any> = new EventEmitter<any>();
   @Output() onTagRemoved:EventEmitter<any> = new EventEmitter<any>();
   @Output() onTagAddClicked:EventEmitter<any> = new EventEmitter<any>();
+
   @Input() maxTags: number;
   @Input() buttonLabel: string = 'Add';
   @Input() alertTitleLabel: string;
@@ -80,7 +81,7 @@ export class TagsInputComponent implements ControlValueAccessor {
 
   public addItem(): void {
   if(this.onTagAddClicked){
-    this.onTagAddClicked(this);
+    this.onTagAddClicked.emit(this);
   }else{
     this.alertCtrl.create({
       title: this.alertTitleLabel || 'Add item',
