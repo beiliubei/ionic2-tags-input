@@ -15,7 +15,7 @@
 
 #### 1. Install the NPM Package
 ```
-npm install --save ionic2-tags-input
+npm install --save beiliubei/ionic2-tags-input
 ```
 
 #### 2. Import `TagsInputModule` module into your app's module.
@@ -55,6 +55,9 @@ Form structure
   });
 ```
 
+```
+   add 'onTagAddClicked' if you want to hander add event, ant then call 'notifyDataChanged'.
+```
 
 ### @Inputs / Attributes
 
