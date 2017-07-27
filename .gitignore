@@ -17,3 +17,5 @@ Thumbs.db
 
 # Ignored folders
 aot
+/.idea
+/package-lock.json
