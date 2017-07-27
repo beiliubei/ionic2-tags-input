@@ -1,7 +1,6 @@
 import {Component, forwardRef, EventEmitter, Output, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {AlertController, ToastController} from "ionic-angular";
-import {noop} from "@angular/core/src/linker/view_utils";
 import * as _ from "lodash";
 /*
   Generated class for the TagInput component.
@@ -43,8 +42,8 @@ export class TagsInputComponent implements ControlValueAccessor {
   @Input() maxWordLength: number;
   @Input() allowDuplicates: boolean = false;
 
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
+  private onTouchedCallback: () => void;
+  private onChangeCallback: (_: any) => void;
 
   public values: Array<any> = [];
   public isDisabled: boolean = false;

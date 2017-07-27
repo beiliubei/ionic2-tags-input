@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component, forwardRef, EventEmitter, Output, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import { AlertController, ToastController } from "ionic-angular";
-import { noop } from "@angular/core/src/linker/view_utils";
 import * as _ from "lodash";
 /*
   Generated class for the TagInput component.
@@ -27,8 +26,6 @@ var TagsInputComponent = (function () {
         this.onTagAddClicked = new EventEmitter();
         this.buttonLabel = 'Add';
         this.allowDuplicates = false;
-        this.onTouchedCallback = noop;
-        this.onChangeCallback = noop;
         this.values = [];
         this.isDisabled = false;
     }
