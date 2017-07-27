@@ -31,6 +31,7 @@ export class TagsInputComponent implements ControlValueAccessor {
 
   @Output() onTagAdded:EventEmitter<any> = new EventEmitter<any>();
   @Output() onTagRemoved:EventEmitter<any> = new EventEmitter<any>();
+  @Output() onTagAddClicked:EventEmitter<any> = new EventEmitter<any>();
   @Input() maxTags: number;
   @Input() buttonLabel: string = 'Add';
   @Input() alertTitleLabel: string;
@@ -68,7 +69,19 @@ export class TagsInputComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
+  public notifyDataChanged(data:any){
+    data.index = this.values.length;
+    if (data.name && !this.checkDuplicatesRestriction(data.name) && !this.checkMaxWordLengthRestriction( data.name)) {
+       this.addValue(data);
+       return false;
+    }
+    return true;
+  }
+
   public addItem(): void {
+  if(this.onTagAddClicked){
+    this.onTagAddClicked(this);
+  }else{
     this.alertCtrl.create({
       title: this.alertTitleLabel || 'Add item',
       inputs: [
@@ -92,6 +105,7 @@ export class TagsInputComponent implements ControlValueAccessor {
         ]
     }).present();
   }
+}
 
   private checkMaxItemsRestriction (index: number): boolean {
     if (index >= this.maxTags) {
