@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component, forwardRef, EventEmitter, Output, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import { AlertController, ToastController } from "ionic-angular";
-import * as _ from "lodash";
 /*
   Generated class for the TagInput component.
 
@@ -104,9 +103,11 @@ var TagsInputComponent = (function () {
             duration: 3000
         });
         if (!this.allowDuplicates) {
-            if (_.find(this.values, { name: name })) {
-                duplicatesRestrictionError.present();
-                return true;
+            for (var item in this.values) {
+                if (item === name) {
+                    duplicatesRestrictionError.present();
+                    return true;
+                }
             }
         }
         return false;

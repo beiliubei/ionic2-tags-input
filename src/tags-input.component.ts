@@ -1,7 +1,6 @@
 import {Component, forwardRef, EventEmitter, Output, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {AlertController, ToastController} from "ionic-angular";
-import * as _ from "lodash";
 /*
   Generated class for the TagInput component.
 
@@ -130,9 +129,11 @@ export class TagsInputComponent implements ControlValueAccessor {
     });
 
     if (!this.allowDuplicates) {
-      if (_.find(this.values, {name})) {
-        duplicatesRestrictionError.present();
-        return true
+      for (let item in this.values){
+        if (item === name){
+          duplicatesRestrictionError.present();
+          return true
+        }
       }
     }
     return false
